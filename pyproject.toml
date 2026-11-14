@@ -33,6 +33,7 @@ typeCheckingMode = "strict"
 [tool.pytest]
 testpaths = ["tests"]
 pythonpath = ["tests"]
+pytester_example_dir = "tests/specimens"
 strict = true
 markers = [
     "component: uses real local binaries, no VMs",
