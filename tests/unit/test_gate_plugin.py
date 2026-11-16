@@ -9,3 +9,10 @@ def test_gate_test_is_skipped_without_gate_flag(pytester: pytest.Pytester) -> No
     )
     result.assert_outcomes(skipped=1)
     result.stdout.fnmatch_lines(["*SKIPPED*--gate*"])
+
+
+def test_gate_test_runs_with_gate_flag(pytester: pytest.Pytester) -> None:
+    specimen = pytester.copy_example("gate_passing.py")
+
+    result = pytester.runpytest("-p", "support.gate_plugin", "--gate", specimen)
+    result.assert_outcomes(passed=1)
